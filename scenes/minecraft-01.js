@@ -38,27 +38,27 @@ camera.lookAt(0, 0, 0);
 scene.add(camera);
 
 // Configura o evento de mousemove para rotacionar a perspectiva
-document.addEventListener('mousemove', function (event) {
-    var x = event.clientX / window.innerWidth - 0.5;
-    var y = event.clientY / window.innerHeight - 0.5;
-    camera.position.x = x * 10;
-    camera.position.y = y * 10;
-});
+// document.addEventListener('mousemove', function(event) {
+//     var x = event.clientX / window.innerWidth - 0.5;
+//     var y = event.clientY / window.innerHeight - 0.5;
+//     camera.position.x = x * 10;
+//     camera.position.y = y * 10;
+// });
 
 // Configura o evento de touchmove para rotacionar a perspectiva
-document.addEventListener('touchmove', function (event) {
-    var x = event.touches[0].clientX / window.innerWidth - 0.5;
-    var y = event.touches[0].clientY / window.innerHeight - 0.5;
-    camera.position.x = x * 10;
-    camera.position.y = y * 10;
-});
+// document.addEventListener('touchmove', function (event) {
+//     var x = event.touches[0].clientX / window.innerWidth - 0.5;
+//     var y = event.touches[0].clientY / window.innerHeight - 0.5;
+//     camera.position.x = x * 10;
+//     camera.position.y = y * 10;
+// });
 
 // Configura o evento de click do mouse para adicionar ou remover cubos
-document.addEventListener('click', function (event) {
+document.addEventListener('click', function(event) {
     // Calcula a posição do mouse na tela
     var mouse = new THREE.Vector2();
     mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
-    mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+    mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
 
 
     // Cria um raio a partir da posição da câmera até o mouse
@@ -87,11 +87,12 @@ document.addEventListener('click', function (event) {
     }
 
     // Renderiza o jogo
-   
-});
- function update() {
-        requestAnimationFrame(update);
-        renderer.render(scene, camera);
-    }
 
-    update();
+});
+
+function update() {
+    requestAnimationFrame(update);
+    renderer.render(scene, camera);
+}
+
+update();
