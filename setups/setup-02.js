@@ -13,7 +13,10 @@ const options = {
     backgroundColor: 0x222222
 }
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+renderer.setPixelRatio(window.devicePixelRatio)
+
 renderer.setSize(
     options.width, options.height
 );
@@ -30,7 +33,9 @@ scene.background = new THREE.Color(
 const camera = new THREE.PerspectiveCamera(
     50, options.width / options.height
 );
-camera.position.z = 5;
+camera.position.x = 1.5;
+camera.position.y = 3.5;
+camera.position.z = 8.5;
 
 // const light = new THREE.AmbientLight(
 //      0xffffff, 2
@@ -41,6 +46,17 @@ const light = new THREE.HemisphereLight(
 );
 
 scene.add(light);
+
+const x3 = new THREEx3({
+    THREE,
+    OrbitControls: THREE.OrbitControls,
+    camera,
+    renderer,
+    scene
+})
+
+x3.add(camera, { open: false });
+x3.add(light, { helper: { visible: false } });
 
 
 // Path: setups\setup-02.js
